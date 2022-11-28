@@ -27,11 +27,15 @@ end
 
 
 """
-Read settings file
+Read settings file.
 """
 function read_cfg_file(cfg_file_path)
+	settings = readlines(cfg_file_path)
+	settings = [setting for setting in settings if !startswith(lstrip(amount), "#")]
+	
+	return settings
 end
 
 
-function write_results(output_file_path)
+function print_results(output_file_path)
 end

@@ -1,0 +1,5 @@
+# User input file. Input dollar amounts should be in either USDs or NTDs.
+
+1000
+20.99
+324.9
