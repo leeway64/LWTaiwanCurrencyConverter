@@ -14,6 +14,8 @@ cd LWTaiwanCurrencyConverter
 
 ## Downloading the latest Federal Reserve data
 
+First, download the latest Federal Reserve data onto your local machine. The following command will
+download the csv data into the [include](folder).
 ```bash
 
 ```
@@ -32,6 +34,12 @@ All user input is entered into [input.txt](include/input.txt).
 
 
 ```bash
+julia project=.
+```
+
+The final results are outputted into [output.txt](include/output.txt).
+```text
+
 ```
 
 

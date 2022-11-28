@@ -14,7 +14,15 @@ function USDtoNTD(USD, conversion_rate)
 end
 
 
-function read_input_file(input_file_path)
+"""
+Read the file containing the input dollars and return the contents of that file as an array.
+"""
+function read_input_file()
+    input_file_path = "include/input.txt"
+    input_dollars = readlines(input_file_path)
+    input_dollars = [amount for amount in input_dollars if !startswith(lstrip(amount), "#")]
+    
+    return input_dollars
 end
 
 
