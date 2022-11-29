@@ -1,5 +1,24 @@
 # Similar to if __name__ == "__main__" in Python
 if abspath(PROGRAM_FILE) == @__FILE__
+    settings = read_cfg_file("include/settings.cfg")
+
+    if settings["plot_exchange_rate"] == true
+        plot_exchange_rate()
+    else
+        conversion_rate = get_conversion_rate()
+        input_dollars = read_input()
+
+        input_output_dict = Dict()
+        if settings["USD_to_NTD"] == true
+            for entry in input_dollars
+            end
+        else
+        end
+    end
+end
+
+
+function get_conversion_rate()
 
 end
 
@@ -15,11 +34,10 @@ end
 
 
 """
-Read the file containing the input dollars and return the contents of that file as an array.
+Read the input dollars from standard input and return the contents of that file as an array.
 """
-function read_input_file()
-    input_file_path = "include/input.txt"
-    input_dollars = readlines(input_file_path)
+function read_input()
+    input_dollars = readlines()
     input_dollars = [amount for amount in input_dollars if !startswith(lstrip(amount), "#")]
     
     return input_dollars
@@ -37,5 +55,11 @@ function read_cfg_file(cfg_file_path)
 end
 
 
-function print_results(output_file_path)
+function print_results(input_output_dict, output_file_path)
+
+end
+
+
+function plot_exchange_rate()
+
 end
