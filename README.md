@@ -65,7 +65,7 @@ First, make sure that `plot_exchange_rate` is set to `true` in [settings.cfg](in
 ```text
 # Application settings file
 
-USDtoNTD = true
+USD_to_NTD = true
 plot_exchange_rate = true
 ```
 

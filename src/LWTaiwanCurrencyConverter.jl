@@ -1,3 +1,6 @@
+using Printf
+
+
 # Similar to if __name__ == "__main__" in Python
 if abspath(PROGRAM_FILE) == @__FILE__
     settings = read_cfg_file("include/settings.cfg")
@@ -6,14 +9,19 @@ if abspath(PROGRAM_FILE) == @__FILE__
         plot_exchange_rate()
     else
         conversion_rate = get_conversion_rate()
+        converter = NTDtoUSD
+        if settings["USD_to_NTD"]
+            converter = USDtoNTD
+        end
+
         input_dollars = read_input()
 
         input_output_dict = Dict()
-        if settings["USD_to_NTD"] == true
-            for entry in input_dollars
-            end
-        else
+        for entry in input_dollars
+            input_output_dict[entry] = converter(entry, conversion_rate)
         end
+
+        print_results(input_output_dict, settings)
     end
 end
 
@@ -55,11 +63,24 @@ function read_cfg_file(cfg_file_path)
 end
 
 
-function print_results(input_output_dict, output_file_path)
+"""
+Print the USD converted to NTD, or vice versa
+"""
+function print_results(input_output_dict, settings)
+    if settings["USD_to_NTD"]
+        println("USD converted to NTD")
+    else
+        println("NTD converted to USD")
+    end
 
+    for (key, value) in input_output_dict
+        @printf("%s -> %s\n", key, value)
+    end
 end
 
 
+"""
+"""
 function plot_exchange_rate()
 
 end
