@@ -8,6 +8,7 @@ LWTaiwanCurrencyConverter converts US dollars (USD) to New Taiwan Dollars (TWD) 
 In addition, LWTaiwanCurrencyConverter can also plot the NTD to USD exchange rate (NTD per USD) as
 it changes over time.
 
+The terms TWD and NTD (New Taiwan Dollar) are used interchangeably in this project.
 
 ## Installation
 

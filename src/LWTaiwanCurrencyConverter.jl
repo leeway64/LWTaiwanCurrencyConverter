@@ -1,3 +1,4 @@
+using Plots
 using Printf
 
 
@@ -80,7 +81,8 @@ end
 
 
 """
+Plot the exchange rate of TWD over time
 """
-function plot_exchange_rate()
-
+function plot_exchange_rate(exchange_rates)
+    plot(exchange_rates)
 end
