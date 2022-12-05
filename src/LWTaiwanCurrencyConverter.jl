@@ -1,30 +1,5 @@
-using Plots
+#using Plots
 using Printf
-
-
-# Similar to if __name__ == "__main__" in Python
-if abspath(PROGRAM_FILE) == @__FILE__
-    settings = read_cfg_file("include/settings.cfg")
-
-    if settings["plot_exchange_rate"] == true
-        plot_exchange_rate()
-    else
-        conversion_rate = get_conversion_rate()
-        converter = NTDtoUSD
-        if settings["USD_to_NTD"]
-            converter = USDtoNTD
-        end
-
-        input_dollars = read_input()
-
-        input_output_dict = Dict()
-        for entry in input_dollars
-            input_output_dict[entry] = converter(entry, conversion_rate)
-        end
-
-        print_results(input_output_dict, settings)
-    end
-end
 
 
 function get_conversion_rate()
@@ -58,9 +33,17 @@ Read settings file.
 """
 function read_cfg_file(cfg_file_path)
 	settings = readlines(cfg_file_path)
-	settings = [setting for setting in settings if !startswith(lstrip(amount), "#")]
+	settings = [setting for setting in settings if !startswith(lstrip(setting), "#") && setting != ""]
 	
-	return settings
+	settings_dict = Dict()
+	for setting in settings
+	    key, value = split(setting, "=")
+	    key = lstrip(rstrip(key))
+	    value = lstrip(rstrip(value))
+	    settings_dict[key] = value
+	end
+	
+	return settings_dict
 end
 
 
@@ -85,4 +68,30 @@ Plot the exchange rate of TWD over time
 """
 function plot_exchange_rate(exchange_rates)
     plot(exchange_rates)
+end
+
+
+# Similar to if __name__ == "__main__" in Python
+if abspath(PROGRAM_FILE) == @__FILE__
+    settings = read_cfg_file("include/settings.cfg")
+
+
+    if settings["plot_exchange_rate"] == true
+        plot_exchange_rate()
+    else
+        conversion_rate = get_conversion_rate()
+        converter = NTDtoUSD
+        if settings["USD_to_NTD"]
+            converter = USDtoNTD
+        end
+
+        input_dollars = read_input()
+
+        input_output_dict = Dict()
+        for entry in input_dollars
+            input_output_dict[entry] = converter(entry, conversion_rate)
+        end
+
+        print_results(input_output_dict, settings)
+    end
 end

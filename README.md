@@ -23,7 +23,7 @@ cd LWTaiwanCurrencyConverter
 First, download the latest Federal Reserve data onto your local machine. The following command will
 download the csv data into the [include](folder).
 ```bash
-
+sudo bash ./lib/get-currency-exchange-rates.sh
 ```
 
 
@@ -51,7 +51,7 @@ All user input is entered into [input.txt](include/input.txt).
 
 Then, LWTaiwanCurrencyConverter reads input.txt from standard input.
 ```bash
-cat include/input.txt | julia project=. LWTaiwanCurrencyConverter.jl | docker run --rm r-base /bin/bash cat
+cat include/input.txt | julia project=. LWTaiwanCurrencyConverter.jl | sudo docker run -i --rm r-base cat
 ```
 
 The final results are printed to standard output through the Docker container:
