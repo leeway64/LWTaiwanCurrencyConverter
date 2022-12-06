@@ -54,6 +54,10 @@ Then, LWTaiwanCurrencyConverter reads input.txt from standard input.
 cat include/input.txt | julia project=. LWTaiwanCurrencyConverter.jl | sudo docker run -i --rm r-base cat
 ```
 
+The `-i` option for the `docker run` command keeps standard input open, and the `--rm` option
+removes the container when it exits (source:
+[docker run documentation](https://docs.docker.com/engine/reference/commandline/run/))
+
 The final results are printed to standard output through the Docker container:
 ```text
 

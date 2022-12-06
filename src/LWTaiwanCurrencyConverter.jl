@@ -1,4 +1,6 @@
 #using Plots
+#using CSV
+#using DataFrames
 using Printf
 
 
@@ -22,7 +24,7 @@ Read the input dollars from standard input and return the contents of that file 
 """
 function read_input()
     input_dollars = readlines()
-    input_dollars = [amount for amount in input_dollars if !startswith(lstrip(amount), "#")]
+    input_dollars = [parse(Float64, amount) for amount in input_dollars if !startswith(lstrip(amount), "#") && amount != ""]
     
     return input_dollars
 end
@@ -40,6 +42,14 @@ function read_cfg_file(cfg_file_path)
 	    key, value = split(setting, "=")
 	    key = lstrip(rstrip(key))
 	    value = lstrip(rstrip(value))
+        if value == "true"
+            value = true
+        elseif value == "false"
+            value = false
+        else
+            println("Error with input file. Input file values must be \"true\" or \"false\".")
+            exit(1)
+        end
 	    settings_dict[key] = value
 	end
 	
@@ -76,7 +86,7 @@ if abspath(PROGRAM_FILE) == @__FILE__
     settings = read_cfg_file("include/settings.cfg")
 
 
-    if settings["plot_exchange_rate"] == true
+    if settings["plot_exchange_rate"]
         plot_exchange_rate()
     else
         conversion_rate = get_conversion_rate()
