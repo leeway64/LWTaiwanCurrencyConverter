@@ -1,0 +1,12 @@
+= Julia Project Workflow
+
+
+== Setting up Project
+
+`+julia -e "using Pkg; Pkg.activate(pwd()); Pkg.instantiate()"+`
+
+
+== Installing Packages
+
+`+julia --project=. -e "using Pkg; Pkg.add([\"Plots\", \"DataFrames\", \"CSV\"])"+`
+
