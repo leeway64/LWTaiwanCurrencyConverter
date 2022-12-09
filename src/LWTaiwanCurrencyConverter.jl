@@ -4,18 +4,29 @@ using DataFrames
 using Printf
 
 
-function get_conversion_rate()
+function get_exchange_rate_data(path_to_CSV)
+    CSV_data = CSV.File(path_to_CSV)
+    exchange_rate_df = DataFrame(CSV_data)
+    exchange_rate_df = exchange_rate_df[:, [:"Series Description", :"TAIWAN -- SPOT EXCHANGE RATE, NT$/US$ "]
 
+    return exchange_rate_df
+end
+
+function get_latest_exchange_rate(exchange_rate_df)
+    exchange_rate_list = exchange_rate_df[:, :"TAIWAN -- SPOT EXCHANGE RATE, NT$/US$ "]
+    exchange_rate = last(exchange_rate_list)
+    
+    return exchange_rate
 end
 
 
-function NTDtoUSD(NTD, conversion_rate)
-	return NTD / conversion_rate
+function NTDtoUSD(NTD, exchange_rate)
+	return NTD / exchange_rate
 end
 
 
-function USDtoNTD(USD, conversion_rate)
-	return USD * conversion_rate
+function USDtoNTD(USD, exchange_rate)
+	return USD * exchange_rate
 end
 
 
@@ -89,7 +100,7 @@ if abspath(PROGRAM_FILE) == @__FILE__
     if settings["plot_exchange_rate"]
         plot_exchange_rate()
     else
-        conversion_rate = get_conversion_rate()
+        exchange_rate = get_latest_exchange_rate("include/FRB_H10.csv")
         converter = NTDtoUSD
         if settings["USD_to_NTD"]
             converter = USDtoNTD
@@ -99,7 +110,7 @@ if abspath(PROGRAM_FILE) == @__FILE__
 
         input_output_dict = Dict()
         for entry in input_dollars
-            input_output_dict[entry] = converter(entry, conversion_rate)
+            input_output_dict[entry] = converter(entry, exchange_rate)
         end
 
         print_results(input_output_dict, settings)
