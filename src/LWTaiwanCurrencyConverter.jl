@@ -10,24 +10,14 @@ function get_exchange_rate_data(path_to_CSV)
 
     # Only get the data we need
     exchange_rate_df = exchange_rate_df[:, [:"Series Description", :"TAIWAN -- SPOT EXCHANGE RATE, NT\$/US\$ "]]
-
-    #print(exchange_rate_df."THAILAND -- SPOT EXCHANGE RATE -- THAILAND ")
-    #print(exchange_rate_df."SWITZERLAND -- SPOT EXCHANGE RATE, FRANCS/US\$ ")
-    #print(exchange_rate_df."Series Description")    
-    #print(exchange_rate_df."TAIWAN -- SPOT EXCHANGE RATE, NT\$/US\$ ")
-    
-    # println(exchange_rate_df)
-    
     return exchange_rate_df
 end
 
 
 function get_latest_exchange_rate(exchange_rate_df)
     exchange_rate_list = exchange_rate_df[:, :"TAIWAN -- SPOT EXCHANGE RATE, NT\$/US\$ "]
-    println(exchange_rate_list)
     exchange_rate = last(exchange_rate_list)
-    println(exchange_rate)
-    return exchange_rate
+    return parse(Float64, exchange_rate)
 end
 
 
@@ -106,8 +96,6 @@ end
 # Similar to if __name__ == "__main__" in Python
 if abspath(PROGRAM_FILE) == @__FILE__
     exchange_rate_df = get_exchange_rate_data("include/FRB_H10.csv")
-    get_latest_exchange_rate(exchange_rate_df)
-"""
     settings = read_cfg_file("include/settings.cfg")
 
 
@@ -124,9 +112,9 @@ if abspath(PROGRAM_FILE) == @__FILE__
 
         input_output_dict = Dict()
         for entry in input_dollars
-            input_output_dict[entry] = converter(entry, exchange_rate)
+            input_output_dict[entry] = round(converter(entry, exchange_rate), digits=2)
         end
 
         print_results(input_output_dict, settings)
-    end"""
+    end
 end
