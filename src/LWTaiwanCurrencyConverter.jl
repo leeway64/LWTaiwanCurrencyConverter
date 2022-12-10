@@ -7,15 +7,26 @@ using Printf
 function get_exchange_rate_data(path_to_CSV)
     CSV_data = CSV.File(path_to_CSV)
     exchange_rate_df = DataFrame(CSV_data)
-    exchange_rate_df = exchange_rate_df[:, [:"Series Description", :"TAIWAN -- SPOT EXCHANGE RATE, NT$/US$ "]
 
+    # Only get the data we need
+    exchange_rate_df = exchange_rate_df[:, [:"Series Description", :"TAIWAN -- SPOT EXCHANGE RATE, NT\$/US\$ "]]
+
+    #print(exchange_rate_df."THAILAND -- SPOT EXCHANGE RATE -- THAILAND ")
+    #print(exchange_rate_df."SWITZERLAND -- SPOT EXCHANGE RATE, FRANCS/US\$ ")
+    #print(exchange_rate_df."Series Description")    
+    #print(exchange_rate_df."TAIWAN -- SPOT EXCHANGE RATE, NT\$/US\$ ")
+    
+    # println(exchange_rate_df)
+    
     return exchange_rate_df
 end
 
+
 function get_latest_exchange_rate(exchange_rate_df)
-    exchange_rate_list = exchange_rate_df[:, :"TAIWAN -- SPOT EXCHANGE RATE, NT$/US$ "]
+    exchange_rate_list = exchange_rate_df[:, :"TAIWAN -- SPOT EXCHANGE RATE, NT\$/US\$ "]
+    println(exchange_rate_list)
     exchange_rate = last(exchange_rate_list)
-    
+    println(exchange_rate)
     return exchange_rate
 end
 
@@ -87,20 +98,23 @@ end
 """
 Plot the exchange rate of TWD over time
 """
-function plot_exchange_rate(exchange_rates)
-    plot(exchange_rates)
+function plot_exchange_rate(exchange_rate_df)
+    plot()
 end
 
 
 # Similar to if __name__ == "__main__" in Python
 if abspath(PROGRAM_FILE) == @__FILE__
+    exchange_rate_df = get_exchange_rate_data("include/FRB_H10.csv")
+    get_latest_exchange_rate(exchange_rate_df)
+"""
     settings = read_cfg_file("include/settings.cfg")
 
 
     if settings["plot_exchange_rate"]
-        plot_exchange_rate()
+        plot_exchange_rate(exchange_rate_df)
     else
-        exchange_rate = get_latest_exchange_rate("include/FRB_H10.csv")
+        exchange_rate = get_latest_exchange_rate(exchange_rate_df)
         converter = NTDtoUSD
         if settings["USD_to_NTD"]
             converter = USDtoNTD
@@ -114,5 +128,5 @@ if abspath(PROGRAM_FILE) == @__FILE__
         end
 
         print_results(input_output_dict, settings)
-    end
+    end"""
 end
