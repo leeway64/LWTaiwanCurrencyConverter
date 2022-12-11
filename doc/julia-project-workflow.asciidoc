@@ -13,7 +13,7 @@ the Project.toml file is created after running `+Pkg.activate+` and after you in
 `+julia -e "using Pkg; Pkg.activate(pwd()); Pkg.instantiate()"+`
 
 
-the `+-e+` option evaluates the expression.
+The `+-e+` option evaluates the expression.
 
 
 == Installing Packages

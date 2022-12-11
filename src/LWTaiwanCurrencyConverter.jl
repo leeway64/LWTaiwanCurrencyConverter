@@ -5,7 +5,9 @@ using Printf
 
 
 """
-Get the exchange rate data from the Federal Reserve Bank. D
+Read the exchange rate data from the Federal Reserve Bank into a DataFrame.
+The first DataFrame column is the Series Description (including the time period), and the second
+column is the info pertaining to Taiwan (including the exchange rate).
 """
 function get_exchange_rate_data(path_to_CSV)
     CSV_data = CSV.File(path_to_CSV)
@@ -18,7 +20,7 @@ end
 
 
 """
-Get the most reent exchange rate from the data.
+Get the most recent exchange rate from the Federal Reserve data.
 """
 function get_latest_exchange_rate(exchange_rate_df)
     exchange_rate_list = exchange_rate_df[:, :"TAIWAN -- SPOT EXCHANGE RATE, NT\$/US\$ "]
@@ -55,7 +57,7 @@ end
 
 
 """
-Read settings file.
+Read settings file and return a dictionary of each setting and its value.
 """
 function read_cfg_file(cfg_file_path)
 	settings = readlines(cfg_file_path)
@@ -82,7 +84,7 @@ end
 
 
 """
-Print the USD converted to NTD, or vice versa
+Print the USD converted to NTD (or vice versa) in a nice format.
 """
 function print_results(input_output_dict, settings)
     if settings["USD_to_NTD"]
@@ -98,7 +100,7 @@ end
 
 
 """
-Plot the exchange rate of TWD over time
+Plot the exchange rate of TWD over time.
 """
 function plot_exchange_rate(exchange_rate_df)
     series_description = exchange_rate_df[:, :"Series Description"]

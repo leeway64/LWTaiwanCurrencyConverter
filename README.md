@@ -21,7 +21,7 @@ cd LWTaiwanCurrencyConverter
 ## Downloading the latest Federal Reserve data
 
 First, download the latest Federal Reserve data onto your local machine. The following command will
-download the csv data into the [include](folder).
+download the csv data into the [include](include) folder.
 ```bash
 sudo bash ./lib/get-currency-exchange-rates.sh
 ```
@@ -65,7 +65,6 @@ The final results are printed to standard output through the Docker container:
 
 
 ## Plotting NTD exchange rates over time
-
 First, make sure that `plot_exchange_rate` is set to `true` in [settings.cfg](include/settings.cfg):
 ```text
 # Application settings file
@@ -81,7 +80,7 @@ julia --project=. LWTaiwanCurrencyConverter.jl
 
 
 ## Unit Tests
-
+To run unit tests, run:
 ```bash
 julia --project=. test/test-suite.jl
 ```
