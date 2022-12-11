@@ -86,5 +86,18 @@ julia --project=. LWTaiwanCurrencyConverter.jl
 julia --project=. test/test-suite.jl
 ```
 
+
+## Credits  
+Credit goes to the [US Federal Reserve Bank](https://www.federalreserve.gov/) for providing the
+exchange rate data. Refer to [this page](https://www.federalreserve.gov/datadownload/Choose.aspx?rel=H10)
+for more information on the dataset used in this project, along with other exchange rate datasets.
+
+Additionally, refer to [this page](https://www.federalreserve.gov/datadownload/) for more
+information on other Federal Reserve datasets.
+
+
 ## Third-Party Tools
-- [Docker](https://www.docker.com/): Application containerization.
+- [Docker](https://www.docker.com/): Application containerization
+- [Plots](https://github.com/JuliaPlots/Plots.jl) (MIT Expat License): Julia data visualization library
+- [DataFrames](https://github.com/JuliaData/DataFrames.jl) (MIT License): Julia tabular data structure library
+- [CSV](https://github.com/JuliaData/CSV.jl) (MIT Expat License): Julia CSV library

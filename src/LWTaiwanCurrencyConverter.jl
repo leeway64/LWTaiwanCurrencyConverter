@@ -4,6 +4,9 @@ using DataFrames
 using Printf
 
 
+"""
+Get the exchange rate data from the Federal Reserve Bank. D
+"""
 function get_exchange_rate_data(path_to_CSV)
     CSV_data = CSV.File(path_to_CSV)
     exchange_rate_df = DataFrame(CSV_data)
@@ -14,6 +17,9 @@ function get_exchange_rate_data(path_to_CSV)
 end
 
 
+"""
+Get the most reent exchange rate from the data.
+"""
 function get_latest_exchange_rate(exchange_rate_df)
     exchange_rate_list = exchange_rate_df[:, :"TAIWAN -- SPOT EXCHANGE RATE, NT\$/US\$ "]
     exchange_rate = last(exchange_rate_list)
@@ -21,11 +27,17 @@ function get_latest_exchange_rate(exchange_rate_df)
 end
 
 
+"""
+Converts NTD to USD by dividing by the NTDs per USD exchange rate
+"""
 function NTDtoUSD(NTD, exchange_rate)
 	return NTD / exchange_rate
 end
 
 
+"""
+Converts USD to NTD by multiplying by the NTDs per USD exchange rate
+"""
 function USDtoNTD(USD, exchange_rate)
 	return USD * exchange_rate
 end
@@ -89,7 +101,16 @@ end
 Plot the exchange rate of TWD over time
 """
 function plot_exchange_rate(exchange_rate_df)
-    plot()
+    series_description = exchange_rate_df[:, :"Series Description"]
+    taiwan_data = exchange_rate_df[:, :"TAIWAN -- SPOT EXCHANGE RATE, NT\$/US\$ "]
+
+    starting_index = findall(y->y=="Time Period", series_description)[1]
+    dates = series_description[starting_index + 1:]
+    exchange_rates = taiwan_data[starting_index + 1:]
+    # Convert original string value to decimal value
+    exchange_rates = map(z->parse(Float64, z), exchange_rates)
+
+    plot(dates, exchange_rates)
 end
 
 

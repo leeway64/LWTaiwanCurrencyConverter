@@ -5,6 +5,8 @@
 main()
 {
     # Download the exchange rates CSV file into the include directory
+    # Refer to this page for more information on the download: https://www.federalreserve.gov/datadownload/Choose.aspx?rel=H10
+	# This dataset is the monthly exchange rate for the past ten years (120 observations)
 	curl -o ./include/FRB_H10.csv "https://www.federalreserve.gov/datadownload/Output.aspx?rel=H10&series=c5d6e0edf324b2fb28d73bcacafaaa02&lastobs=120&from=&to=&filetype=csv&label=include&layout=seriescolumn&type=package"
 
 

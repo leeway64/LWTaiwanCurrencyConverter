@@ -1,0 +1,28 @@
+= Julia Project Workflow
+
+This page details how to set up and install packages for a Julia project directly from the command
+line without dealing with any REPLs (read–eval–print loops).
+
+== Setting up Project
+
+When you first set up a project, you need to create Project.toml and Manifest.toml. `+Pkg.activate(pwd())+`
+and `+Pkg.instantiate()+` will create those two files in the current working directory; technically
+the Project.toml file is created after running `+Pkg.activate+` and after you install the first package.
+
+
+`+julia -e "using Pkg; Pkg.activate(pwd()); Pkg.instantiate()"+`
+
+
+the `+-e+` option evaluates the expression.
+
+
+== Installing Packages
+
+To install a Julia package, use the https://docs.julialang.org/en/v1/stdlib/Pkg/[Pkg] package
+manager.
+
+
+`+julia --project=. -e "using Pkg; Pkg.add([\"Plots\", \"DataFrames\", \"CSV\"])"+`
+
+
+Remember to escape the quotes.
