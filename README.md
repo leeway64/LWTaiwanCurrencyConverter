@@ -75,8 +75,13 @@ plot_exchange_rate = true
 
 To plot the NTD exchange rates, run:
 ```bash
-julia --project=. LWTaiwanCurrencyConverter.jl
+julia -i --project=. LWTaiwanCurrencyConverter.jl
+exit()
 ```
+The `-i` interactive option is for displaying the plot; entering the REPL is one way to display the plot.
+Usually, Julia will just open and then immediately close the plot.
+
+`exit()` quits the REPL
 
 
 ## Unit Tests

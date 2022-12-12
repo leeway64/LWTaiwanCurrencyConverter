@@ -106,18 +106,33 @@ function plot_exchange_rate(exchange_rate_df)
     series_description = exchange_rate_df[:, :"Series Description"]
     taiwan_data = exchange_rate_df[:, :"TAIWAN -- SPOT EXCHANGE RATE, NT\$/US\$ "]
 
+    # Find the index of the "Time Period" value
     starting_index = findall(y->y=="Time Period", series_description)[1]
-    dates = series_description[starting_index + 1:]
-    exchange_rates = taiwan_data[starting_index + 1:]
+    
+    # Get the dates by only getting the values after "Time Period"
+    dates = series_description[starting_index + 1 : length(series_description)]
+    exchange_rates = taiwan_data[starting_index + 1 : length(series_description)]
+    
     # Convert original string value to decimal value
     exchange_rates = map(z->parse(Float64, z), exchange_rates)
 
-    plot(dates, exchange_rates)
+    #println(exchange_rates)
+    #println(dates)
+    display(plot(dates, exchange_rates, size = (1200, 800)))
+    #savefig("doc/exchange-rate-last-12-months.png")
 end
 
 
 # Similar to if __name__ == "__main__" in Python
 if abspath(PROGRAM_FILE) == @__FILE__
+"""
+    x = range(0, 10, length=100)
+    y = sin.(x)
+    display(plot(x, y, size = (1200, 800)))
+    readline()
+    #savefig("include/blah.png")
+   """ 
+
     exchange_rate_df = get_exchange_rate_data("include/FRB_H10.csv")
     settings = read_cfg_file("include/settings.cfg")
 
