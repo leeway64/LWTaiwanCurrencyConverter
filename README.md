@@ -81,7 +81,7 @@ exit()
 The `-i` interactive option is for displaying the plot; entering the REPL is one way to display the plot.
 Usually, Julia will just open and then immediately close the plot.
 
-`exit()` quits the REPL
+`exit()` quits the REPL.
 
 
 ## Unit Tests
@@ -105,3 +105,4 @@ information on other Federal Reserve datasets.
 - [Plots](https://github.com/JuliaPlots/Plots.jl) (MIT Expat License): Julia data visualization library
 - [DataFrames](https://github.com/JuliaData/DataFrames.jl) (MIT License): Julia tabular data structure library
 - [CSV](https://github.com/JuliaData/CSV.jl) (MIT Expat License): Julia CSV library
+- [Measures](https://github.com/JuliaGraphics/Measures.jl) (MIT Expat License): Julia library for measurement types

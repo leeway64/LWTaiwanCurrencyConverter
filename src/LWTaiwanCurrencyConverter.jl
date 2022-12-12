@@ -1,6 +1,7 @@
 using Plots
 using CSV
 using DataFrames
+using Measures
 using Printf
 
 
@@ -116,23 +117,16 @@ function plot_exchange_rate(exchange_rate_df)
     # Convert original string value to decimal value
     exchange_rates = map(z->parse(Float64, z), exchange_rates)
 
-    #println(exchange_rates)
-    #println(dates)
-    display(plot(dates, exchange_rates, size = (1200, 800)))
-    #savefig("doc/exchange-rate-last-12-months.png")
+    plot(dates, exchange_rates, legend = false, size = (1500, 1000), lc = "red", margin = 5mm)
+    plot!(title = "USD to TWD exchange rates vs. last 12 months", lw = 9)  # plot! mutates the plot object
+    xlabel!("Last 12 months")
+    ylabel!("Exchange rate (NTDs per USD)")
+    gui()  # Display the plot
 end
 
 
 # Similar to if __name__ == "__main__" in Python
 if abspath(PROGRAM_FILE) == @__FILE__
-"""
-    x = range(0, 10, length=100)
-    y = sin.(x)
-    display(plot(x, y, size = (1200, 800)))
-    readline()
-    #savefig("include/blah.png")
-   """ 
-
     exchange_rate_df = get_exchange_rate_data("include/FRB_H10.csv")
     settings = read_cfg_file("include/settings.cfg")
 

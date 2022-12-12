@@ -22,7 +22,7 @@ To install a Julia package, use the https://docs.julialang.org/en/v1/stdlib/Pkg/
 manager.
 
 
-`+julia --project=. -e "using Pkg; Pkg.add([\"Plots\", \"DataFrames\", \"CSV\"])"+`
+`+julia --project=. -e "using Pkg; Pkg.add([\"Plots\", \"DataFrames\", \"CSV\", \"Measures\"])"+`
 
 
 Remember to escape the quotes.
