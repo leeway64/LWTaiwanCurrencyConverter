@@ -17,6 +17,9 @@ git clone https://github.com/leeway64/LWTaiwanCurrencyConverter.git
 cd LWTaiwanCurrencyConverter
 ```
 
+LWTaiwanCurrencyConverter is written mostly in Julia; although it is not necessary to set up this
+project, refer to [this document](doc/julia-project-workflow.asciidoc) to learn more about the
+Julia project workflow.
 
 ## Downloading the latest Federal Reserve data
 

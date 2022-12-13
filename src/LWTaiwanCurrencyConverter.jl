@@ -117,6 +117,7 @@ function plot_exchange_rate(exchange_rate_df)
     # Convert original string value to decimal value
     exchange_rates = map(z->parse(Float64, z), exchange_rates)
 
+    # Specify the margin size so the xlabel and ylabel don't get cut off
     plot(dates, exchange_rates, legend = false, size = (1500, 1000), lc = "red", margin = 5mm)
     plot!(title = "USD to TWD exchange rates vs. last 12 months", lw = 9)  # plot! mutates the plot object
     xlabel!("Last 12 months")
