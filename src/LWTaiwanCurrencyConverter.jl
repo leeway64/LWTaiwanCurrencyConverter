@@ -122,6 +122,7 @@ function plot_exchange_rate(exchange_rate_df)
     plot!(title = "USD to TWD exchange rates vs. last 12 months", lw = 9)  # plot! mutates the plot object
     xlabel!("Last 12 months")
     ylabel!("Exchange rate (NTDs per USD)")
+    savefig("doc/USD-to-TWD-exchange-rate-last-12-months.png")
     gui()  # Display the plot
 end
 

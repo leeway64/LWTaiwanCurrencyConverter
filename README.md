@@ -41,6 +41,8 @@ USDtoNTD = true
 plot_exchange_rate = false
 ```
 
+Make sure that `plot_exchange_rate = false`.
+
 
 All user input is entered into [input.txt](include/input.txt).
 ```text
@@ -63,11 +65,20 @@ removes the container when it exits (source:
 
 The final results are printed to standard output through the Docker container:
 ```text
-
+USD converted to NTD
+324.9 -> 10212.58
+20.55 -> 645.95
+99.99 -> 3142.99
+1000.0 -> 31433.0
 ```
+
+If you wanted to convert NTDs to USDs, then change `USDtoNTD = true` to `USDtoNTD = false`.
 
 
 ## Plotting NTD exchange rates over time
+
+![USD-to-TWD-exchange-rate-last-12-months](doc/USD-to-TWD-exchange-rate-last-12-months.png)
+
 First, make sure that `plot_exchange_rate` is set to `true` in [settings.cfg](include/settings.cfg):
 ```text
 # Application settings file
@@ -75,14 +86,16 @@ First, make sure that `plot_exchange_rate` is set to `true` in [settings.cfg](in
 USD_to_NTD = true
 plot_exchange_rate = true
 ```
+If `plot_exchange_rate` is set to true, then it will override all other settings, forcing the
+application to only display the plot.
 
 To plot the NTD exchange rates, run:
 ```bash
-julia -i --project=. LWTaiwanCurrencyConverter.jl
+julia -i --project=. src/LWTaiwanCurrencyConverter.jl
 exit()
 ```
-The `-i` interactive option is for displaying the plot; entering the REPL is one way to display the plot.
-Usually, Julia will just open and then immediately close the plot.
+The `-i` interactive option runs the REPL and is for displaying the plot; entering the REPL is one
+way to display the plot. Usually, Julia will just open and then immediately close the plot.
 
 `exit()` quits the REPL.
 
