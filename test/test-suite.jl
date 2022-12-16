@@ -56,17 +56,33 @@ end
 
     @testset "File with comments but no settings" begin
         settings2 = read_cfg_file("test/test-settings-files/comments.cfg")
+        
+        @test isempty(settings2)
     end
 
     @testset "File with 1 setting" begin
         settings3 = read_cfg_file("test/test-settings-files/1-setting.cfg")
+        
+        @test length(settings3) == 1
+        @test settings3["USDtoNTD"] == true
     end
 
     @testset "File with 3 settings" begin
         settings4 = read_cfg_file("test/test-settings-files/3-settings.cfg")
+        
+        @test length(settings4) == 3
+        @test settings4["USDtoNTD"] == false
+        @test settings4["plot_exchange_rate"] == true
+        @test settings4["FutureSetting1"] == true
     end
 
     @testset "Edge case: File with 4 settings, comments, and whitespace" begin
         settings5 = read_cfg_file("test/test-settings-files/edge-case.cfg")
+        
+        @test length(settings5) == 4
+        @test settings5["USDtoNTD"] == true
+        @test settings5["plot_exchange_rate"] == false
+        @test settings5["FutureSetting1"] == false
+        @test settings5["FutureSetting2"] == true
     end
 end

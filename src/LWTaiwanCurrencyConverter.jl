@@ -62,7 +62,8 @@ Read settings file and return a dictionary of each setting and its value.
 """
 function read_cfg_file(cfg_file_path)
 	settings = readlines(cfg_file_path)
-	settings = [setting for setting in settings if !startswith(lstrip(setting), "#") && setting != ""]
+	# Remove comments and any trailing and leading whitespaces for settings
+	settings = [rstrip(lstrip(setting)) for setting in settings if !startswith(lstrip(setting), "#") && setting != ""]
 	
 	settings_dict = Dict()
 	for setting in settings
