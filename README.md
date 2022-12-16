@@ -49,8 +49,9 @@ All user input is entered into [input.txt](include/input.txt).
 # User input file. Input dollar amounts should be in either USDs or NTDs.
 
 1000
-20.99
+20.55
 324.9
+99.99
 ```
 
 
@@ -116,7 +117,7 @@ Additionally, refer to [this page](https://www.federalreserve.gov/datadownload/)
 information on other Federal Reserve datasets.
 
 
-## Third-Party Tools
+## Third-Party Software
 - [Docker](https://www.docker.com/): Application containerization
 - [Plots](https://github.com/JuliaPlots/Plots.jl) (MIT Expat License): Julia data visualization library
 - [DataFrames](https://github.com/JuliaData/DataFrames.jl) (MIT License): Julia tabular data structure library
