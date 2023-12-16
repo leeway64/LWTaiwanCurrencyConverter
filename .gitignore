@@ -3,3 +3,6 @@ CLion settings
 
 # CSV files
 *.csv
+
+# Python virtual environment
+.venv/

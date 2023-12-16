@@ -1,5 +1,10 @@
 # LWTaiwanCurrencyConverter
 
+```text
+
+```
+
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/leeway64/LWTaiwanCurrencyConverter)
 
@@ -108,6 +113,16 @@ julia --project=. test/test-suite.jl
 ```
 
 
+## Printing Project Logo
+To print the project logo seen at the top of this repository, run the following commands:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python lib/print_logo.py
+```
+
+
 ## Credits  
 Credit goes to the [US Federal Reserve Bank](https://www.federalreserve.gov/) for providing the
 exchange rate data. Refer to [this page](https://www.federalreserve.gov/datadownload/Choose.aspx?rel=H10)
@@ -123,3 +138,5 @@ information on other Federal Reserve datasets.
 - [DataFrames](https://github.com/JuliaData/DataFrames.jl) (MIT License): Julia tabular data structure library
 - [CSV](https://github.com/JuliaData/CSV.jl) (MIT Expat License): Julia CSV library
 - [Measures](https://github.com/JuliaGraphics/Measures.jl) (MIT Expat License): Julia library for measurement types
+- [ART](https://pypi.org/project/art/) (MIT License): ASCII art Python module
+- [redis-py](https://pypi.org/project/redis/) (MIT License): Python package to interact with Redis
