@@ -2,6 +2,7 @@ using Plots
 using CSV
 using DataFrames
 using Measures
+using DataStructures
 using Printf
 
 
@@ -145,7 +146,7 @@ if abspath(PROGRAM_FILE) == @__FILE__
 
         input_dollars = read_input()
 
-        input_output_dict = Dict()
+        input_output_dict = OrderedDict{Float64, Float64}()
         for entry in input_dollars
             input_output_dict[entry] = round(converter(entry, exchange_rate), digits=2)
         end

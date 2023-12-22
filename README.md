@@ -42,7 +42,7 @@ sudo bash ./lib/get-currency-exchange-rates.sh
 ```
 
 
-## LWTaiwanCurrencyConverter Usage
+## LWTaiwanCurrencyConverter usage
 
 User settings are contained in [settings.cfg](include/settings.cfg). Let's assume you want to
 convert USD to NTD. So, you would set `USDtoNTD` to `true`:
@@ -79,10 +79,10 @@ removes the container when it exits (source:
 The final results are printed to standard output through the Docker container:
 ```text
 USD converted to NTD
-324.9 -> 10212.58
-20.55 -> 645.95
-99.99 -> 3142.99
 1000.0 -> 31433.0
+20.55 -> 645.95
+324.9 -> 10212.58
+99.99 -> 3142.99
 ```
 
 If you wanted to convert NTDs to USDs, then change `USDtoNTD = true` to `USDtoNTD = false`.
@@ -113,14 +113,14 @@ way to display the plot. Usually, Julia will just open and then immediately clos
 `exit()` quits the REPL.
 
 
-## Unit Tests
+## Unit tests
 To run unit tests, run:
 ```bash
 julia --project=. test/test-suite.jl
 ```
 
 
-## Printing Project Logo
+## Printing project logo
 Prerequisite: redis-server
 To print the project logo seen at the top of this repository, run the following commands:
 ```bash
@@ -140,7 +140,7 @@ Additionally, refer to [this page](https://www.federalreserve.gov/datadownload/)
 information on other Federal Reserve datasets.
 
 
-## Third-Party Software
+## Third-Party software
 - [Docker](https://www.docker.com/): Application containerization
 - [Plots](https://github.com/JuliaPlots/Plots.jl) (MIT Expat License): Julia data visualization library
 - [DataFrames](https://github.com/JuliaData/DataFrames.jl) (MIT License): Julia tabular data structure library
