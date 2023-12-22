@@ -1,9 +1,16 @@
 # LWTaiwanCurrencyConverter
 
 ```text
-
+==============================================================================================================================================
+ _    __      __ _____        _                       ___                                        ___                            _             
+| |   \ \    / /|_   _| __ _ (_)__ __ __ __ _  _ _   / __| _  _  _ _  _ _  ___  _ _   __  _  _  / __| ___  _ _  __ __ ___  _ _ | |_  ___  _ _ 
+| |__  \ \/\/ /   | |  / _` || |\ V  V // _` || ' \ | (__ | || || '_|| '_|/ -_)| ' \ / _|| || || (__ / _ \| ' \ \ V // -_)| '_||  _|/ -_)| '_|
+|____|  \_/\_/    |_|  \__,_||_| \_/\_/ \__,_||_||_| \___| \_,_||_|  |_|  \___||_||_|\__| \_, | \___|\___/|_||_| \_/ \___||_|   \__|\___||_|  
+                                                                                          |__/                                                
+Taiwan is awesome! Visit Taiwan!
+Remember to vote in 2024!
+==============================================================================================================================================
 ```
-
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/leeway64/LWTaiwanCurrencyConverter)
@@ -83,7 +90,7 @@ If you wanted to convert NTDs to USDs, then change `USDtoNTD = true` to `USDtoNT
 
 ## Plotting NTD exchange rates over time
 
-![USD-to-TWD-exchange-rate-last-12-months](doc/USD-to-TWD-exchange-rate-last-12-months.png)
+![USD-to-TWD-exchange-rate-last-10-years](doc/USD-to-TWD-exchange-rate-last-10-years.png)
 
 First, make sure that `plot_exchange_rate` is set to `true` in [settings.cfg](include/settings.cfg):
 ```text
@@ -114,6 +121,7 @@ julia --project=. test/test-suite.jl
 
 
 ## Printing Project Logo
+Prerequisite: redis-server
 To print the project logo seen at the top of this repository, run the following commands:
 ```bash
 python3 -m venv .venv
