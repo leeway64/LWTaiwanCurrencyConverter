@@ -67,7 +67,7 @@ All user input is entered into [input.txt](include/input.txt).
 ```
 
 
-Then, LWTaiwanCurrencyConverter reads input.txt from standard input.
+Then, LWTaiwanCurrencyConverter reads `input.txt` from standard input.
 ```bash
 cat include/input.txt | julia --project=. src/LWTaiwanCurrencyConverter.jl | sudo docker run -i --rm r-base cat
 ```
@@ -121,7 +121,8 @@ julia --project=. test/test-suite.jl
 
 
 ## Printing project logo
-Prerequisite: redis-server
+**Prerequisite**: redis-server
+
 To print the project logo seen at the top of this repository, run the following commands:
 ```bash
 python3 -m venv .venv
@@ -140,11 +141,12 @@ Additionally, refer to [this page](https://www.federalreserve.gov/datadownload/)
 information on other Federal Reserve datasets.
 
 
-## Third-Party software
+## Third-party software
 - [Docker](https://www.docker.com/): Application containerization
 - [Plots](https://github.com/JuliaPlots/Plots.jl) (MIT Expat License): Julia data visualization library
 - [DataFrames](https://github.com/JuliaData/DataFrames.jl) (MIT License): Julia tabular data structure library
 - [CSV](https://github.com/JuliaData/CSV.jl) (MIT Expat License): Julia CSV library
+- [DataStructures](https://github.com/JuliaCollections/DataStructures.jl) (MIT License): Collection of several data structures for Julia
 - [Measures](https://github.com/JuliaGraphics/Measures.jl) (MIT Expat License): Julia library for measurement types
 - [ART](https://pypi.org/project/art/) (MIT License): ASCII art Python module
 - [redis-py](https://pypi.org/project/redis/) (MIT License): Python package to interact with Redis
